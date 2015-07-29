@@ -29,7 +29,7 @@ module RailsEmailPreview
     end
 
     def method_name
-      @action_name ||= preview_method.to_s.humanize
+      @action_name ||= preview_class_name.constantize.send('labels', preview_method)
     end
 
     def group_name
