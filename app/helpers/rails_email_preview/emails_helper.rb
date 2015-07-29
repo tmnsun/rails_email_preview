@@ -7,12 +7,12 @@ module RailsEmailPreview::EmailsHelper
   end
 
   def change_locale_attr(locale)
-    {href:  rails_email_preview.rep_email_path(preview_params.merge(part_type: @part_type, email_locale: locale)),
+    {href:  rep_email_path(preview_params.merge(part_type: @part_type, email_locale: locale)),
      class: rep_btn_class(@email_locale == locale.to_s)}
   end
 
   def change_format_attr(format)
-    {href: rails_email_preview.rep_email_path(preview_params.merge(part_type: format)),
+    {href: rep_email_path(preview_params.merge(part_type: format)),
      class: rep_btn_class(@part_type == format)}
   end
 
@@ -39,7 +39,7 @@ module RailsEmailPreview::EmailsHelper
 
   def attachment_links(mail)
     mail.attachments.map do |attachment|
-      url = rails_email_preview.rep_raw_email_attachment_path(preview_params.merge(filename: attachment.filename))
+      url = rep_raw_email_attachment_path(preview_params.merge(filename: attachment.filename))
       link_to(attachment.filename, url, title: attachment.header.to_s)
     end.to_sentence.html_safe
   end

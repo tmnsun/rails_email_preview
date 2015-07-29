@@ -28,7 +28,7 @@ module RailsEmailPreview
 
     # Really deliver an email
     def test_deliver
-      redirect_url = rails_email_preview.rep_email_url(params.slice(:preview_id, :email_locale))
+      redirect_url = rep_email_url(params.slice(:preview_id, :email_locale))
       if (address = params[:recipient_email]).blank? || address !~ /@/
         redirect_to redirect_url, alert: t('rep.test_deliver.provide_email')
         return
@@ -113,7 +113,7 @@ module RailsEmailPreview
         body_content = body_part.body.to_s
 
         mail.attachments.each do |attachment|
-          web_url = rails_email_preview.rep_raw_email_attachment_url(params[:preview_id], attachment.filename)
+          web_url = rep_raw_email_attachment_url(params[:preview_id], attachment.filename)
           body_content.gsub!(attachment.url, web_url)
         end
 

@@ -10,7 +10,7 @@ module RailsEmailPreview
 
       def generate_routing
         route "mount RailsEmailPreview::Engine, at: 'emails'"
-        log "# You can access REP urls like this: rails_email_preview.rep_emails_url #=> '/emails'"
+        log "# You can access REP urls like this: rep_emails_url #=> '/emails'"
       end
     end
   end

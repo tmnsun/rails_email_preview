@@ -3,13 +3,13 @@ ruby:
   adapter = ::RailsEmailPreview::Integrations::ComfortableMexicanSofa
   snippet = @snippet || (adapter.cms_snippet_class === @record && @record)
   if snippet && (p = adapter.rep_email_params_from_snippet(snippet))
-    show_url = rails_email_preview.rep_raw_email_url(p)
+    show_url = rep_raw_email_url(p)
   end
   customize_form = show_url.present? || snippet && !snippet.persisted?
 
 - if customize_form
   javascript:
-    if (window.parent && window.parent.rep && (new RegExp('#{rails_email_preview.rep_root_path}')).test(parent.location.href)) {
+    if (window.parent && window.parent.rep && (new RegExp('#{rep_root_path}')).test(parent.location.href)) {
       jQuery(function($) {
         // Hide nav:
         $('.left-column,.right-column').hide();
