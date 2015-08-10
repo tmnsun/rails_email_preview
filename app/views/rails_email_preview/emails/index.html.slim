@@ -14,8 +14,3 @@ h1 = t '.list_title'
             - group_previews.each do |p|
               a class=rep_style[:list_group_item_class] href=rep_email_path(preview_id: p.id, email_locale: @email_locale)
                 = p.method_name
-hr
-p.text-center.text-small.text-info
-  | #{t 'rep.base.email', count: previews.length} #{t 'rep.base.in'} #{t 'rep.base.mailer', count: list.groups.length }
-  br
-  a href="https://github.com/glebm/rails_email_preview" target='_blank' REP #{RailsEmailPreview::VERSION}
